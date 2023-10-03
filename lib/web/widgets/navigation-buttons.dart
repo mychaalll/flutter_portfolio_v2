@@ -19,20 +19,39 @@ class _NavButtonsState extends State<NavButtons> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      padding: const EdgeInsets.only(
+        left: 20.0,
+        right: 20.0,
+        top: 10,
+      ),
       child: MouseRegion(
         onEnter: (_) => setState(() => _isHovered = true),
         onExit: (_) => setState(() => _isHovered = false),
         child: GestureDetector(
           onTap: widget.onTap, 
           child: Container(
-            child: Text(
-              widget.text,
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w700,
-                color: _isHovered ? AppColors.purple : Colors.white
-              ),
+            child: Column(
+              children: [
+                Text(
+                  widget.text,
+                  style: TextStyle(
+                    shadows: [
+                      Shadow(
+                        color: _isHovered ? AppColors.purple : Colors.white,
+                        offset: Offset(0, -5)
+                      )
+                    ],
+                    fontSize: 14,
+                    fontWeight: FontWeight.w700,
+                    color:Colors.transparent,
+                    decoration:  _isHovered ? TextDecoration.underline :TextDecoration.none,
+                    decorationThickness: 2,
+                    decorationColor: Colors.white
+                  ),
+                ),
+                
+                
+              ],
             ),
           ),
         ),
