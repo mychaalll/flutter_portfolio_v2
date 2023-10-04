@@ -3,6 +3,7 @@ import 'package:portfolio_v2/utils/colors.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:lottie/lottie.dart';
 
 class LandingPage extends StatelessWidget {
   final double height;
@@ -14,8 +15,8 @@ class LandingPage extends StatelessWidget {
       height: height,
       decoration: BoxDecoration(
         image: DecorationImage(
-          colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.3), BlendMode.darken),
-          image: AssetImage('assets/images/polygon-bg1.jpg'),
+          colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.7), BlendMode.darken),
+          image: AssetImage('images/purplewallpaper1.png'),
           fit: BoxFit.cover
         )
       ),
@@ -35,7 +36,7 @@ class LandingPage extends StatelessWidget {
                   children: [
                     
                     Expanded(
-                      flex: 3,
+                      flex: 4,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -67,6 +68,7 @@ class LandingPage extends StatelessWidget {
                                   color: AppColors.purple,
                                   borderRadius: BorderRadius.circular(8)
                                 ),
+                                
                               ),
                               SizedBox(width: 5),
                               Column(
@@ -154,18 +156,17 @@ class LandingPage extends StatelessWidget {
                     ),
                     SizedBox(width: 20,),
                     Expanded(
-                      flex: 1,
+                      flex: 3,
                       child: Container(
                         child: Center(
                           child: Container(
                             decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(),
-                              color: AppColors.purple,
                               
                             ),
-                            height: 250,
-                            width: 200,
+                            child: Lottie.asset(
+                                'animations/animation_coding.json',
+                                fit:BoxFit.cover
+                              ),
                           )
                         ),
                       ),

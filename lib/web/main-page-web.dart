@@ -129,7 +129,7 @@ class _MainPageWebState extends State<MainPageWeb> {
                 child: LandingPage(height: height),
               ),
               Container(
-                color: Colors.black,
+                color: Color.fromARGB(255, 20, 6, 22),
                 child: AnimatedOpacity(
                   duration: Duration(milliseconds: 500),
                   opacity: (_scrollPosition / height).clamp(0.0, 1.0),
@@ -139,8 +139,8 @@ class _MainPageWebState extends State<MainPageWeb> {
               Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.3), BlendMode.darken),
-                    image: AssetImage('assets/images/polygon-bg2.jpg'),
+                    colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.8), BlendMode.darken),
+                    image: AssetImage('images/purplewallpaper1.png'),
                     fit: BoxFit.cover
                   )
                 ),
@@ -151,7 +151,7 @@ class _MainPageWebState extends State<MainPageWeb> {
                 ),
               ),
               Container(
-                color: Colors.black,
+                color: Color.fromARGB(255, 20, 6, 22),
                 child: AnimatedOpacity(
                   duration: Duration(milliseconds: 500),
                   opacity: ((_scrollPosition / height) - 2.0).clamp(0.0, 1.0),
