@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_v2/utils/colors.dart';
+import 'package:portfolio_v2/web/widgets/heading.dart';
 
 class AboutMePage extends StatelessWidget {
   final double height;
@@ -17,28 +18,8 @@ class AboutMePage extends StatelessWidget {
             flex: 4,
             child: Column(
               children: [
-                const SizedBox(height: 60),
-                Row(
-                  children: [
-                    Container(
-                      height: 30,
-                      width: 5,
-                      decoration: BoxDecoration(
-                        color: AppColors.purple,
-                        borderRadius: BorderRadius.circular(8)
-                      ),
-                    ),
-                    SizedBox(width: 10),
-                    Text(
-                      'ABOUT ME',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700
-                      ),
-                    )
-                  ],
-                ),
+                const SizedBox(height: 80),
+                Heading(text: 'ABOUT ME'),
                 const SizedBox(height: 40),
                 Expanded(
                   child: Row(
@@ -98,3 +79,4 @@ class AboutMePage extends StatelessWidget {
     );
   }
 }
+

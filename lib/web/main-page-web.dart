@@ -3,6 +3,7 @@ import 'package:portfolio_v2/utils/colors.dart';
 import 'package:portfolio_v2/utils/responsive.dart';
 import 'package:portfolio_v2/web/about-me-page.dart';
 import 'package:portfolio_v2/web/landing-page.dart';
+import 'package:portfolio_v2/web/skills-page.dart';
 import 'package:portfolio_v2/web/widgets/navigation-buttons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -28,8 +29,13 @@ class _MainPageWebState extends State<MainPageWeb> {
     setState(() {
       _scrollPosition = _scrollController.offset;
     });
-    print(_scrollPosition);
+    print(' scroll pos $_scrollPosition');
+    print('normal div ${(_scrollPosition / 661) - 1.0}');
+    print(((_scrollPosition / 661) - 1.0).clamp(0.0, 1.0),);
   }
+
+ 
+
   @override
   Widget build(BuildContext context) {
     
@@ -40,6 +46,7 @@ class _MainPageWebState extends State<MainPageWeb> {
     
     return Scaffold(
       extendBodyBehindAppBar: true,
+      backgroundColor: Colors.grey[900],
       appBar:AppBar(
         backgroundColor: Colors.black.withOpacity(0.6),
         elevation: 4,
@@ -49,7 +56,7 @@ class _MainPageWebState extends State<MainPageWeb> {
           child: Row(
             children: [
               Text(
-                'Mychal\'s Portfolio',
+                height.toString(),
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   color: Colors.white,
@@ -112,8 +119,20 @@ class _MainPageWebState extends State<MainPageWeb> {
                   child: AboutMePage(height: height)
                 ),
               ),
-              LandingPage(height: height),
-              
+              Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.3), BlendMode.darken),
+                    image: AssetImage('assets/images/polygon-bg2.jpg'),
+                    fit: BoxFit.cover
+                  )
+                ),
+                child: AnimatedOpacity(
+                  duration: Duration(milliseconds: 500),
+                  opacity: ((_scrollPosition / 661) - 1.0).clamp(0.0, 1.0),
+                  child: SkillsPage(height: height)
+                ),
+              ),
             ],
           ),
         )
