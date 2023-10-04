@@ -124,6 +124,15 @@ class LandingPage extends StatelessWidget {
                           ),
                           const SizedBox(height: 20),
                           GestureDetector(
+                            onTap: ()async{
+                              Uri url = Uri.parse('https://drive.google.com/uc?export=download&id=1oQJZLGzeNLquq9QCp_X4ARqKaXip6YFS');
+                              if( await canLaunchUrl(url)){
+                                await launchUrl(url);
+                              }
+                              else{
+                                throw ("Couldnt launch $url");
+                              }
+                            },
                             child: Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(6),

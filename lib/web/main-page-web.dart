@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_v2/utils/colors.dart';
 import 'package:portfolio_v2/utils/responsive.dart';
 import 'package:portfolio_v2/web/about-me-page.dart';
+import 'package:portfolio_v2/web/footer-page.dart';
 import 'package:portfolio_v2/web/landing-page.dart';
+import 'package:portfolio_v2/web/projects-page.dart';
 import 'package:portfolio_v2/web/skills-page.dart';
 import 'package:portfolio_v2/web/widgets/navigation-buttons.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -42,7 +44,6 @@ class _MainPageWebState extends State<MainPageWeb> {
     double height = MediaQuery.of(context).size.height;
     ResponsiveLayout responsiveLayout = ResponsiveLayout(context);
     String deviceType = responsiveLayout.getDeviceType();
-
     
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -56,7 +57,7 @@ class _MainPageWebState extends State<MainPageWeb> {
           child: Row(
             children: [
               Text(
-                height.toString(),
+                'Mychal',
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   color: Colors.white,
@@ -70,25 +71,41 @@ class _MainPageWebState extends State<MainPageWeb> {
                   NavButtons(
                     text: 'HOME',
                     onTap: (){
-                      
+                      final double targetPosition = 0;
+                      _scrollController.animateTo(
+                        targetPosition, 
+                        duration: Duration(milliseconds: 500), 
+                        curve: Curves.easeOut);
                     },
                   ),
                   NavButtons(
                     text: 'ABOUT ME',
                     onTap: (){
-                      
+                      final double targetPosition = height - 20;
+                      _scrollController.animateTo(
+                        targetPosition, 
+                        duration: Duration(milliseconds: 500), 
+                        curve: Curves.easeOut);
                     },
                   ),
                   NavButtons(
                     text: 'SKILLS',
                     onTap: (){
-                      
+                      final double targetPosition = height * 2 - 5;
+                      _scrollController.animateTo(
+                        targetPosition, 
+                        duration: Duration(milliseconds: 500), 
+                        curve: Curves.easeOut);
                     },
                   ),
                   NavButtons(
                     text: 'PROJECTS',
                     onTap: (){
-                      
+                      final double targetPosition = height * 3 ;
+                      _scrollController.animateTo(
+                        targetPosition, 
+                        duration: Duration(milliseconds: 500), 
+                        curve: Curves.easeOut);
                     },
                   ),
                  
@@ -129,10 +146,19 @@ class _MainPageWebState extends State<MainPageWeb> {
                 ),
                 child: AnimatedOpacity(
                   duration: Duration(milliseconds: 500),
-                  opacity: ((_scrollPosition / 661) - 1.0).clamp(0.0, 1.0),
+                  opacity: ((_scrollPosition / height) - 1.0).clamp(0.0, 1.0),
                   child: SkillsPage(height: height)
                 ),
               ),
+              Container(
+                color: Colors.black,
+                child: AnimatedOpacity(
+                  duration: Duration(milliseconds: 500),
+                  opacity: ((_scrollPosition / height) - 2.0).clamp(0.0, 1.0),
+                  child: ProjectsPage(height: height),
+                ),
+              ),
+              FooterPage(height: height,),
             ],
           ),
         )
