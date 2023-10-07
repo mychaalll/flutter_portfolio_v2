@@ -44,13 +44,11 @@ class _NavButtonsState extends State<NavButtons> {
                     fontSize: 14,
                     fontWeight: FontWeight.w700,
                     color:Colors.transparent,
-                    decoration:  _isHovered ? TextDecoration.underline :TextDecoration.none,
+                    decoration: widget.isActive ? TextDecoration.underline : TextDecoration.none,
                     decorationThickness: 2,
                     decorationColor: Colors.white
                   ),
                 ),
-                
-                
               ],
             ),
           ),

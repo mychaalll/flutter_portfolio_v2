@@ -38,27 +38,27 @@ class FooterPage extends StatelessWidget {
             height: 60,
             child: Row(
               children: [
-                Spacer(),
+                Spacer(flex: 2),
                 FooterIcons(
                   icon: FontAwesomeIcons.facebookF, 
                   url: 'https://www.facebook.com/tsm.mychaalll',
                 ),
-                Spacer(),
+                Spacer(flex: 1),
                 FooterIcons(
                   icon: FontAwesomeIcons.solidEnvelope, 
                   url: 'mailto:tsmmychaalll@gmail.com?subject=Job%20Related',
                 ),
-                Spacer(),
+                Spacer(flex: 1),
                 FooterIcons(
                   icon: FontAwesomeIcons.linkedin, 
                   url: 'https://www.linkedin.com/in/mychal-esure%C3%B1a-534903286',
                 ),
-                Spacer(),
+                Spacer(flex: 1),
                 FooterIcons(
                   icon: FontAwesomeIcons.github,
                   url: 'https://github.com/mychaalll'
                 ),
-                Spacer(),
+                Spacer(flex: 2),
               ],
             ),
           ),

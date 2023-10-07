@@ -26,6 +26,14 @@ List<Projects> projectList = [
     toolsIcon:['assets/images/flutter.png', 'assets/images/firebase.png'],
   ),
   Projects(
+    thumbnail: 'assets/images/weebpedia.jpg',
+    title: 'Weebpedia',
+    date: '2023',
+    details: 'Weebpedia is a dedicated haven for anime enthusiasts, offering a comprehensive database of anime series and movies. Powered by the animedb API, it ensures accurate and up-to-date information, making it the go-to source for anime lovers seeking details on their favorite shows and films.',
+    tools: ['Flutter'],
+    toolsIcon:['assets/images/flutter.png'],
+  ),
+  Projects(
     thumbnail: 'assets/images/pandesalApp.jpg',
     title: 'Santos Pandesal App',
     date: '2023',

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_v2/utils/colors.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:portfolio_v2/utils/responsive.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:lottie/lottie.dart';
 
@@ -11,12 +12,14 @@ class LandingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ResponsiveLayout responsiveLayout = ResponsiveLayout(context);
+    String deviceType = responsiveLayout.getDeviceType();
     return Container(
       height: height,
       decoration: BoxDecoration(
         image: DecorationImage(
           colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.7), BlendMode.darken),
-          image: AssetImage('images/purplewallpaper1.png'),
+          image: AssetImage('assets/images/purplewallpaper1.png'),
           fit: BoxFit.cover
         )
       ),
@@ -154,8 +157,8 @@ class LandingPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(width: 20,),
-                    Expanded(
+                    deviceType == 'web' ? SizedBox(width: 20,) : Container(),
+                    deviceType == 'web' ? Expanded(
                       flex: 3,
                       child: Container(
                         child: Center(
@@ -164,13 +167,13 @@ class LandingPage extends StatelessWidget {
                               
                             ),
                             child: Lottie.asset(
-                                'animations/animation_coding.json',
+                                'assets/animations/animation_coding.json',
                                 fit:BoxFit.cover
                               ),
                           )
                         ),
                       ),
-                    ),
+                    ) : Container(),
                   ],
                 ),
                 const SizedBox(height: 40),
