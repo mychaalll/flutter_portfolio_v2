@@ -167,7 +167,7 @@ class LandingPage extends StatelessWidget {
                               
                             ),
                             child: Lottie.asset(
-                                'assets/animations/animation_coding.json',
+                                'assets/animations/animation_coding-coffee.json',
                                 fit:BoxFit.cover
                               ),
                           )

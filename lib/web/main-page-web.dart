@@ -20,7 +20,7 @@ class MainPageWeb extends StatefulWidget {
 }
 
 class _MainPageWebState extends State<MainPageWeb> {
-  ScrollController _scrollController = ScrollController();
+  ScrollController _scrollController = ScrollController(initialScrollOffset: 0);
   double _scrollPosition = 0.0;
   int _currentIndex = 0;
   double _screenHeight = 0.0;
@@ -28,35 +28,35 @@ class _MainPageWebState extends State<MainPageWeb> {
   @override
   void initState() {
     super.initState();
-    _scrollController = ScrollController();
     _scrollController.addListener(_scrollListener);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      // This callback is called after the first frame is built
+      if(_scrollController.hasClients){
+        _scrollController.jumpTo(50);
+      }
+    });
+    
 
   }
 
   void _scrollListener() {
+    final double offset = _scrollController.offset;
+
+    int newIndex;
+    if (offset >= _screenHeight * 3) {
+      newIndex = 3;
+    } else if (offset >= _screenHeight * 2 - 5) {
+      newIndex = 2;
+    } else if (offset >= _screenHeight) {
+      newIndex = 1;
+    } else {
+      newIndex = 0;
+    }
+
     setState(() {
-      _scrollPosition = _scrollController.offset;
+      _scrollPosition = offset;
+      _currentIndex = newIndex;
     });
-    if(_scrollPosition >= _screenHeight * 3){
-      setState(() {
-        _currentIndex = 3;
-      });
-    }
-    else if(_scrollPosition >= _screenHeight * 2 - 5){
-      setState(() {
-        _currentIndex = 2;
-      });
-    }
-    else if(_scrollPosition >= _screenHeight){
-      setState(() {
-        _currentIndex = 1;
-      });
-    }
-    else{
-      setState(() {
-        _currentIndex = 0;
-      });
-    }
   }
 
  

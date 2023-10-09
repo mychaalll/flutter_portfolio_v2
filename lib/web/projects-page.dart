@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_v2/data/projects-data.dart';
 import 'package:portfolio_v2/web/widgets/heading.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProjectsPage extends StatefulWidget {
   final double height;
@@ -118,14 +119,23 @@ class _ProjectCardState extends State<ProjectCard> {
       onEnter: (_) {
         setState(() => _isHovered = true);
         widget.onHover(true, widget.project.thumbnail);
-        _pageController.nextPage(duration: Duration(milliseconds: 500), curve: Curves.linear);
+        _pageController.nextPage(duration: Duration(milliseconds: 200), curve: Curves.linear);
       },
       onExit: (_) {
         setState(() => _isHovered = false);
         widget.onHover(false, widget.project.thumbnail);
-        _pageController.previousPage(duration: Duration(milliseconds: 500), curve: Curves.linear);
+        _pageController.previousPage(duration: Duration(milliseconds: 200), curve: Curves.linear);
       },
       child: GestureDetector(
+        onTap: ()async{
+          Uri url = Uri.parse(widget.project.link);
+          if( await canLaunchUrl(url)){
+            await launchUrl(url);
+          }
+          else{
+            throw ("Couldnt launch $url");
+          }
+        },
         child: Container(
           clipBehavior: Clip.hardEdge,
           decoration: BoxDecoration(

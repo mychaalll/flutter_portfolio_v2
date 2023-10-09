@@ -97,8 +97,10 @@ flutter:
     - assets/images/weebpedia.jpg
     - assets/images/polygon-bg1.jpg
     - assets/images/polygon-bg2.jpg
+    - assets/images/flutter_portfolio.jpeg
     - assets/images/formal-pic.JPG
     - assets/animations/animation_coding.json
+    - assets/animations/animation_coding-coffee.json
     - assets/images/purplewallpaper1.png
     - assets/animations/animation_lnein3oa.json
     - assets/animations/animation_lneiqwgk.json
